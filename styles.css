@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #B3E5FC; /* Soft pastel blue */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 2; /* Ensure it stays above background images */
+}
+
+.card {
+    background-color: #E1F5FE; /* Soft pastel blue background for card */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background-color: #E1F5FE; /* Changes background on hover */
+}
+
+.header h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.body {
+    font-size: 18px;
+    color: #333;
+}
+
+#name-placeholder {
+    font-weight: bold;
+    color: #10165d;
+    font-size: 22px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Animations */
+button {
+    background-color: #74c2e9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color:  #74c2e9;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Placeholder Styles */
+.image-placeholder {
+    position: absolute;
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1; /* Ensure images are behind the card */
+    opacity: 0.2; /* Make images faint */
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.image-placeholder img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    animation: slideInUp 3s ease-out infinite;
+    opacity: 0.5;
+}
+
+.image-placeholder img:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.image-placeholder img:nth-child(2) {
+    top: 5%;
+    left: 40%;
+    animation-delay: 1s;
+}
+
+.image-placeholder img:nth-child(3) {
+    top: 60%;
+    left: 50%;
+    animation-delay: 2s;
+}
+
+/* Confetti effect */
+.confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+}
+
+.confetti div {
+    position: absolute;
+    background-color: #ff0;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+    animation: fall 2s ease-out infinite;
+}
+
+.confetti div:nth-child(odd) {
+    background-color: #ff0066;
+}
+
+.confetti div:nth-child(even) {
+    background-color: #00ccff;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Animations */
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(to right, #ff6a00, #ff007f, #00ff99, #00ccff, #8000ff);
+    }
+    100% {
+        background: linear-gradient(to right, #ff007f, #ff6a00, #00ff99, #8000ff, #00ccff);
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translateY(100px) rotate(20deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .card {
+        width: 80%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
